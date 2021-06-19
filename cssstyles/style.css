@@ -1,0 +1,197 @@
+.tabresponsive{
+  width: 100%;
+  overflow-x: auto;
+}
+
+.centerAlign{
+  text-align:center;
+}
+.animationHeading{
+  font-size: 2.5rem;
+  font-weight: 300;
+  color:#545b62;
+  line-height: 1.2;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+
+/* responsive navbar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  .topnav a:hover {
+    text-decoration:underline;
+    /* color: black; */
+  }
+  .topnav a.active {
+    background-color: #4CAF50;
+    /* background-color: #EDCD1F; */
+    color:white;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+  .topnav-right {
+    float: right;
+  }
+  .flexAlign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .indicatorMsg {
+    color: red;
+    font-size: 20px;
+    display:none;
+    font-style:oblique;
+    color:blue;
+}
+.recordArea {
+  width: 100%;
+}
+.modal-header {
+  display: block!important;
+}
+
+
+  /* responsive screen */
+  @media screen and (max-width: 600px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+      float: right;
+      display: block;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+
+  /* Media Query for Pixel2xl ,2XL,iphone,5678 and plus and x ,galaxy S5,*/
+
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: white;
+  background-color: #4CAF50;
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.panel-info>.panel-heading {
+  color: white;
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.cardPadfb {
+  padding: 15px;
+}
+
+@media (min-width: 576px){
+.modal-dialog {
+  max-width: 80%; 
+}
+
+}
+.redColor{
+  color: #d9534f;
+
+}
+
+.mg-b-20{
+  margin-bottom:20px;
+}
+
+.mg-r-10{
+  margin-right:10px;
+}
+
+.color-heading{color:black;font-size: 18px;}
+
+.dis-flex-jus-con{
+  display: flex;
+  justify-content: center;
+}
+.pStyle {
+  text-align: justify;
+  font-size: 25px;
+}
+
+.error_red {
+  color: #fd702e;
+}
+
+.mg-around{
+  margin:25px;
+}
+.mg-t-25{
+  margin-top:25px;
+}
+.w-auto{
+  width:auto;
+}
+.flex-items-center{
+  align-items: center;
+}
+
+.text-gray-light {
+  color: #6a737d;
+}
+
+@media (max-width: 414px){
+  #video1{
+    width:100%;
+  }
+  #optionsHolder label{
+    display:block;
+  }
+   #regForm{
+     padding:0px;
+     width: auto;
+    margin: 20px;
+   }
+  .responsiveTitle{
+    font-size: 40px;
+  }
+  .pStyle{
+    word-spacing: -2px;
+  }
+  .mg-t-xs-10{
+    margin-top:10px;
+  }
+  
+}
+
+@media (max-width: 1030px) {
+  .flexWrapper {
+    flex-direction: column;
+  }
+  .wrapper {
+    padding: 0!important  ;
+  }
+}
+@media (max-width: 767px) {
+  .modal-header .talkBot {
+    font-size: 20px;
+  }
+}

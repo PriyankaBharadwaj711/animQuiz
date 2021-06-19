@@ -1,0 +1,41 @@
+image: alpine:3.7
+
+git branch -M main
+before_script: 
+  - 'which ssh-agent || ( apk update && apk add openssh-client && apk add bash && apk add rsync)'
+  - mkdir ~/.ssh && touch known_hosts
+  - echo "$PUBLIC_HOST_KEY" >> ~/.ssh/known_hosts
+  - eval $(ssh-agent -s)
+  - bash -c "ssh-add <(echo '$PRIVATE_SSH_KEY')"
+  
+stages:
+  - dev
+  - staging
+  - prod
+
+deploy-dev:
+  only:
+    refs:
+      - dev
+  stage: dev
+  script:
+    - rsync -auvz -e "ssh" ./ --exclude-from 'exclude_list.txt' --delete --no-perms handsondeploy@quiz-mgmt.cs.odu.edu:/var/www/qav2/animQuiz/dev
+    - ssh-agent -k
+deploy-test:
+  only:
+    refs:
+      - staging
+  stage: staging
+  script:
+    - rsync -auvz -e "ssh" ./ --exclude-from 'exclude_list.txt' --delete --no-perms handsondeploy@quiz-mgmt.cs.odu.edu:/var/www/qav2/animQuiz/staging
+    - ssh-agent -k
+
+deploy-prod:
+  only:
+    refs:
+      - master
+  stage: prod
+  script:
+    - rsync -auvz -e "ssh" ./ --exclude-from 'exclude_list.txt' --delete --no-perms handsondeploy@quiz-mgmt.cs.odu.edu:/var/www/qav2/animQuiz/prod
+    - ssh-agent -k
+

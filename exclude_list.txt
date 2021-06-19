@@ -1,0 +1,6 @@
+.git
+.gitlab-ci.yml
+.gitignore
+exclude_list.txt
+README.md
+known_hosts
