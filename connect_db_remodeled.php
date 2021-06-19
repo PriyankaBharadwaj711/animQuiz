@@ -5,10 +5,10 @@
 // $dbname = "animationDemo";
 
 // Dev
-	$servername = "handson-mysql";
-	$username = "kumar";
-	$password = "kumar";
-	$dbname = "animationDemo_dev";
+	$servername = "agitechsample.clbifhef4gsa.us-east-2.rds.amazonaws.com:3306";
+	$username = "handson";
+	$password = "handsonhandson";
+	$dbname = "Aggression_Remodeled";
 
 // 	//PROD
 // 	$servername = "handson-mysql";
