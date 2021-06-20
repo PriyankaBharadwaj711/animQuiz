@@ -9,7 +9,7 @@
 $servername = "agitechsample.clbifhef4gsa.us-east-2.rds.amazonaws.com";
 $username = "handson";
 $password = "handsonhandson";
-$dbname = "Agitech_Remodeled";
+$dbname = "Animation_Quiz";
 
 // PROD
 // $servername = "handson-mysql";
