@@ -5,7 +5,7 @@
 // $dbname = "animationDemo";
 
 // Dev
-	$servername = "agitechsample.clbifhef4gsa.us-east-2.rds.amazonaws.com:3306";
+	$servername = "agitechsample.clbifhef4gsa.us-east-2.rds.amazonaws.com";
 	$username = "handson";
 	$password = "handsonhandson";
 	$dbname = "Aggression_Remodeled";

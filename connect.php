@@ -6,10 +6,10 @@
 
 
   // Dev
-$servername = "handson-mysql";
-$username = "kumar";
-$password = "kumar";
-$dbname = "animationDemo_dev";
+$servername = "agitechsample.clbifhef4gsa.us-east-2.rds.amazonaws.com";
+$username = "handson";
+$password = "handsonhandson";
+$dbname = "Agitech_Remodeled";
 
 // PROD
 // $servername = "handson-mysql";
