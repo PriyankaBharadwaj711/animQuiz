@@ -24,101 +24,86 @@ require("../connect.php");
                     <div class="form-group row">
                         <div class="col-sm-12 col-md-12">
                         <table id="tbl1" class="table tabresponsive demographic">
-                                <tr style="background-color: #4CAF50; color: white; font-weight: bold;"><th colspan="3">Demographic Form Submission Data</th></tr>
+                                <tr style="background-color: #4CAF50; color: white; font-weight: bold;"><th colspan="21">Demographic Form Submission Data</th>
+                                <th colspan="3">Quiz Submission Data</th></tr>
                                 <!-- <tbody id="pullquizans"> -->
                                     <?php 
-                                    $uid = $_POST["userid"];
-                                    $sql = "SELECT username, fname, parentName,phnum,email,relationship,child,age,gender,race,grade,lunchStatus,zip,pastmeals,homeless,payUtility,notWorking,childknows,findResources,anything,signature,signDate,clinicName FROM `users` WHERE id = ?";
+                                    // $uid = $_POST["userid"];
+                                    $sql = "SELECT username, fname, parentName, phnum,email,id,relationship,child,age,gender,race,grade,lunchStatus,zip,pastmeals,homeless,payUtility,notWorking,childknows,findResources,anything,signature,signDate,clinicName FROM `users`";
                                     $stmt= $conn->prepare($sql);
-                                    $stmt->execute([$uid]);
+                                    $stmt->execute();
                                     $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
                                     if($result){
-                                        foreach($result as $row){
-                                        echo '<tr><th colspan="2">Child Name</th><td>'.$row["fname"].'</td></tr>';
-                                        if($row["parentName"] == ""){
-                                            echo '<tr><th colspan="2">Parent Name</th><td>'.'Not Applicable'.'</td></tr>';
-                                        }else{
-                                            echo '<tr><th colspan="2">Parent Name</th><td>'.$row["parentName"].'</td></tr>';
-                                        }
-                                        if($row["phnum"] == 0){
-                                            echo '<tr><th colspan="2">Phone Number</th><td>'.'Not Applicable'.'</td></tr>';
-                                        }else{
-                                            echo '<tr><th colspan="2">Phone Number</th><td>'.$row["phnum"].'</td></tr>';
-                                        }
-                                        echo '<tr><th colspan="2">Email</th><td>'.$row["email"].'</td></tr>';
-                                        echo '<tr><th colspan="2">Age</th><td>'.$row["age"].'</td></tr>';
-                                        echo '<tr><th colspan="2">Relationship to child:</th><td>'.$row["relationship"].'</td></tr>';
-                                        echo '<tr><th colspan="2">Does your child have any of the following? (Check all that apply)</th><td>'.$row["child"].'</td></tr>';
-                                        echo '<tr><th colspan="2">Gender</th><td>'.$row["gender"].'</td></tr>';
-                                        if($row["race"] == ""){
-                                            echo '<tr><th colspan="2">Race</th><td>'.'Not Applicable'.'</td></tr>';
-                                        }else{
-                                            echo '<tr><th colspan="2">Race</th><td>'.$row["race"].'</td></tr>';
-                                        }
-                                        if($row["grade"] == ""){
-                                            echo '<tr><th colspan="2">Child\'s Grade</th><td>'.'Not Applicable'.'</td></tr>';
-                                        }else{
-                                            echo '<tr><th colspan="2">Child\'s Grade</th><td>'.$row["grade"].'</td></tr>';
-                                        }
+                                        echo '<tr><th>Child Name</th>';
+                                        echo '<th>Parent Name</th>';
+                                        echo '<th>Phone Number</th>';
+                                        echo '<th>Email</th>';
+                                        echo '<th>Age</th>';
+                                        echo '<th>Relationship to child:</th>';
+                                        echo '<th>Does your child have any of the following? (Check all that apply)</th>';
+                                        echo '<th>Do you have access to reliable transportation?</th>';
+                                        echo '<th>Gender</th>';
+                                        echo '<th>Race</th>';
+                                        echo '<th>Child\'s Grade</th>';
                                         if($row["lunchStatus"]==""){
-                                            echo '<tr><th colspan="2">Child\'s Lunch Status</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Child\'s Lunch Status</th>';
                                         } else {
-                                        echo '<tr><th colspan="2">Child\'s Lunch Status</th><td>'.$row["lunchStatus"].'</td></tr>';
+                                        echo '<th>Child\'s Lunch Status</th>';
                                        }
                                         if($row["zip"]==""){
-                                                echo '<tr><th colspan="2">Zipcode</th><td>Not Applicable</td></tr>';
+                                                echo '<th>Zipcode</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Zipcode</th><td>'.$row["zip"].'</td></tr>';
+                                                echo '<th>Zipcode</th>';
                                         }
                                         if($row["pastmeals"]==""){
-                                            echo '<tr><th colspan="2">Smaller Meals</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Smaller Meals</th>';
                                         } else {
-                                            echo '<tr><th colspan="2">Smaller Meals</th><td>'.$row["pastmeals"].'</td></tr>';
+                                            echo '<th>Smaller Meals</th>';
                                       }
                                       if($row["homeless"]==""){
-                                        echo '<tr><th colspan="2">Are you homeless or worried that you might be in the future?</th><td>Not Applicable</td></tr>';
+                                        echo '<th>Are you homeless or worried that you might be in the future?</th>';
                                         } else {
-                                            echo '<tr><th colspan="2">Are you homeless or worried that you might be in the future?</th><td>'.$row["homeless"].'</td></tr>';
+                                            echo '<th>Are you homeless or worried that you might be in the future?</th>';
                                         }
                                         if($row["payUtility"]==""){
-                                            echo '<tr><th colspan="2">Do you have trouble paying for your utilities (gas, electricity, phone)?</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Do you have trouble paying for your utilities (gas, electricity, phone)?</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Do you have trouble paying for your utilities (gas, electricity, phone)?</th><td>'.$row["payUtility"].'</td></tr>';
+                                                echo '<th>Do you have trouble paying for your utilities (gas, electricity, phone)?</th>';
                                         }
                                         if($row["notWorking"]==""){
-                                            echo '<tr><th colspan="2">Are any appliances in your home not working?</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Are any appliances in your home not working?</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Are any appliances in your home not working? </th><td>'.$row["notWorking"].'</td></tr>';
+                                                echo '<th>Are any appliances in your home not working? </th>';
                                         }
                                         if($row["childknows"]==""){
-                                            echo '<tr><th colspan="2">Do you think your child knows that you care about them?</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Do you think your child knows that you care about them?</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Do you think your child knows that you care about them?</th><td>'.$row["childknows"].'</td></tr>';
+                                                echo '<th>Do you think your child knows that you care about them?</th>';
                                         }
                                         if($row["findResources"]==""){
-                                            echo '<tr><th colspan="2">If you answered "YES" to any of the above questions?</th><td>Not Applicable</td></tr>';
+                                            echo '<th>If you answered "YES" to any of the above questions?</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">If you answered "YES" to any of the above questions?</th><td>'.$row["findResources"].'</td></tr>';
+                                                echo '<th>If you answered "YES" to any of the above questions?</th>';
                                         }
                                         if($row["anything"]==""){
-                                            echo '<tr><th colspan="2">Anything else you want help with?</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Anything else you want help with?</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Anything else you want help with?</th><td>'.$row["anything"].'</td></tr>';
+                                                echo '<th>Anything else you want help with?</th>';
                                         }
                                         if($row["signature"]==""){
-                                            echo '<tr><th colspan="2">Consent Signature</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Consent Signature</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Consent Signature</th><td>'.$row["signature"].'</td></tr>';
+                                                echo '<th>Consent Signature</th>';
                                         }
                                         if($row["signDate"]==""){
-                                            echo '<tr><th colspan="2">Consent Signed Date</th><td>Not Applicable</td></tr>';
+                                            echo '<th>Consent Signed Date</th>';
                                             } else {
-                                                echo '<tr><th colspan="2">Consent Signed Date</th><td>'.$row["signDate"].'</td></tr>';
+                                                echo '<th>Consent Signed Date</th>';
                                              }
                                              if($row["clinicName"]==""){
-                                                echo '<tr><th colspan="2">Clinic Name</th><td>Not Applicable</td></tr>';
+                                                echo '<th>Clinic Name</th>';
                                                 } else {
-                                                    echo '<tr><th colspan="2">Clinic Name</th><td>'.$row["clinicName"].'</td></tr>';
+                                                    echo '<th>Clinic Name</th>';
                                                 }
                                         // echo '<tr><th colspan="2">Smaller Meals</th><td>'.$row["pastmeals"].'</td></tr>';
                                         // echo '<tr><th colspan="2">Homeless or worrid in future?</th><td>'.$row["homeless"].'</td></tr>';
@@ -130,67 +115,176 @@ require("../connect.php");
                                         // echo '<tr><th colspan="2">Consent Signature</th><td>'.$row["signature"].'</td></tr>';
                                         // echo '<tr><th colspan="2">Consent Signed Date</th><td>'.$row["signDate"].'</td></tr>';
                                         // echo '<tr><th colspan="2">Clinic Name</th><td>'.$row["clinicName"].'</td></tr>';
-                                        // echo '</tr>';                      
-                                    }
-                                     
-                                    } else {
-                                    echo "<tr><td colspan='7' style='text-align:center;font-size: xx-large;' class='redColor'>No Quiz Submissions yet!!! </td></tr>";
-                                    }
-                                    ?>
-                                    <tr colspan="20"></tr>
-                                    <tr colspan="20"></tr>
-                                    <tr style="background-color: #4CAF50; color: white; font-weight: bold;">
-                                        <th>Question</th>
-                                        <th>User Name</th>
-                                        <!-- <th>Yes</th>
-                                        <th>Sometimes</th>
-                                        <th>No</th> -->
-                                        <th>Answer(Yes/No/Sometimes)</th>
-                                    </tr>
-                                    <!-- <tbody id="pullquizans"> -->
-                                    <?php 
-                                    $uid = $_POST["userid"];
-                                    $sql = "SELECT q.id,q.question_text,a.user_id,u.fname,u.lname, a.ans_value,a.timestamp FROM fb_qs as q LEFT JOIN fb_ans as a on q.id = a.q_id LEFT join users as u on a.user_id = u.id WHERE a.user_id = ?";
-                                    $stmt= $conn->prepare($sql);
-                                    $stmt->execute([$uid]);
-                                    $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-                                    if($result){
-                                        foreach($result as $row){
-                                        echo '<tr>';
-                                        echo '<td style="width: 400px;">'.$row["question_text"].'</td>';
-                                        echo '<td>'.$row["fname"].'</td>';
-                                        if($row["ans_value"]=="Yes"){
-                                            echo '<td>Yes</td>';
-                                        // echo '<td><label><input type="radio" disabled  name="optradio'.$row["id"].'" checked></label></td>';
+                                        // echo '</tr>'; 
+                                    // echo'<th></th>';
+                                    $sql1 = "SELECT * FROM fb_qs;";
+                                    $stmt1= $conn->prepare($sql1);
+                                    $stmt1->execute();
+                                    $result1=$stmt1->fetchAll(PDO::FETCH_ASSOC);
+                                    $ids = array();
+                                        if($result1){
+                                        // echo json_encode($result1);
+                                            foreach($result1 as $row1){
+                                                array_push($ids,$row1["id"]);
+                                                echo'<th>'.$row1["question_text"].'</th>';
+                                            }
+                                            // echo json_encode($ids);
+
                                         }
-                                        //else {
-                                        //     echo '<td><label><input type="radio" disabled name="optradio'.$row["id"].'"></label></td>';
-                                        // }
-                                        if($row["ans_value"]=="Sometimes"){
-                                            echo '<td>Sometimes</td>';
-                                        // echo '<td><label><input type="radio"  disabled name="optradio'.$row["id"].'" checked></label></td>';
-                                        }
-                                        // else {
-                                        // echo '<td><label><input type="radio"  disabled name="optradio'.$row["id"].'"></label></td>';
-                                        // }
+                                        $a = 1;
+                                            foreach($result as $row){
+                                                $user_id = $row['id'];
+                                                $sql2 = "SELECT * FROM fb_ans WHERE user_id = '$user_id' ;";
+                                                $stmt2= $conn->prepare($sql2);
+                                                $stmt2->execute();
+                                                $result2=$stmt2->fetchAll(PDO::FETCH_ASSOC);
+                                            // $sql2 = "SELECT * FROM fb_ans WHERE user_id = ".$row['id'].";";
+                                            // $stmt2= $conn->prepare($sql2);
+                                            // $stmt1->execute();
+                                            // $result2=$stmt1->fetchAll(PDO::FETCH_ASSOC);
+                                            // echo'<tr>';
+                                            // if($result2){
+                                            // // echo json_encode($result1);
+                                            //     foreach($result2 as $row2){
+                                            //     echo'<td>'.$row2["ans_value"].'</td>';
+                                            //     }
+                                            // }
+                                            // echo'</tr>';
+                                    //     }
                                         
-                                        if($row["ans_value"]=="No"){
-                                            echo '<td>No</td>';
-                                        // echo '<td><label><input type="radio"  disabled name="optradio'.$row["id"].'" checked></label></td>';
+                                        echo '<tr><td>'.$row["fname"].'</td>';
+                                        if($row["parentName"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                        echo '<td>'.$row["parentName"].'</td>';
                                         }
-                                        // else {
-                                        // echo '<td><label><input type="radio"  disabled name="optradio'.$row["id"].'"></label></td>';
-                                        // }
-                                        echo '</tr>';                      
-                                    }
-                                        echo '<div style="display:inline-flex;align-items: center;">
-                                            <div>Click to listen audio recorded</div>
-                                            <div> <audio controls="controls" src="./services/feedbackViewer.php?userid='.$row["user_id"].'" type="video/mp4" /> </div>
-                                        </div>';
-                                    } else {
-                                    echo "<tr><td colspan='7' style='text-align:center;font-size: xx-large;' class='redColor'>No Quiz Submissions yet!!! </td></tr>";
-                                    }
+                                        if($row["phnum"]== 0){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                        echo '<td>'.$row["phnum"].'</td>';
+                                        }
+                                        echo '<td>'.$row["email"].'</td>';
+                                        echo '<td>'.$row["age"].'</td>';
+                                        if($row["relationship"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["relationship"].'</td>';
+                                        }
+                                        if($row["child"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["child"].'</td>';
+                                        }
+                                        if($row["transportation"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["transportation"].'</td>';
+                                        }
+                                        echo '<td>'.$row["gender"].'</td>';
+                                        if($row["race"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                        echo '<td>'.$row["race"].'</td>';
+                                        }
+                                        if($row["grade"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                        echo '<td>'.$row["grade"].'</td>';
+                                        }
+                                        if($row["lunchStatus"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                        echo '<td>'.$row["lunchStatus"].'</td>';
+                                        }
+                                        if($row["zip"]==""){
+                                                echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["zip"].'</td>';
+                                        }
+                                        if($row["pastmeals"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["pastmeals"].'</td>';
+                                      }
+                                      if($row["homeless"]==""){
+                                        echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["homeless"].'</td>';
+                                        }
+                                        if($row["payUtility"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["payUtility"].'</td>';
+                                        }
+                                        if($row["notWorking"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["notWorking"].'</td>';
+                                        }
+                                        if($row["childknows"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["childknows"].'</td>';
+                                        }
+                                        if($row["findResources"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["findResources"].'</td>';
+                                        }
+                                        if($row["anything"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["anything"].'</td>';
+                                        }
+                                        if($row["signature"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["signature"].'</td>';
+                                        }
+                                        if($row["signDate"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                            } else {
+                                                echo '<td>'.$row["signDate"].'</td>';
+                                             }
+                                             if($row["clinicName"]==""){
+                                                echo '<td>Not Applicable</td>';
+                                                } else {
+                                                    echo '<td>'.$row["clinicName"].'</td>';
+                                                }
+                                        // echo '<tr><th colspan="2">Smaller Meals</th><td>'.$row["pastmeals"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Homeless or worrid in future?</th><td>'.$row["homeless"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Trouble Paying Utility Bills ?</th><td>'.$row["payUtility"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Are any appliances in your home not working </th><td>'.$row["notWorking"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Child knows you care them ?</th><td>'.$row["childknows"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">If you answered "YES" to any of the above questions?</th><td>'.$row["findResources"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Anything else you want help with?</th><td>'.$row["anything"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Consent Signature</th><td>'.$row["signature"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Consent Signed Date</th><td>'.$row["signDate"].'</td></tr>';
+                                        // echo '<tr><th colspan="2">Clinic Name</th><td>'.$row["clinicName"].'</td></tr>';
+                                        // echo '</tr>';
+                                                
+                                                
+                                                foreach($ids as $id){
+                                                    $a = 1;
+                                                    foreach($result2 as $row2 ){
+                                                        if($row2['q_id'] == $id){
+                                                            echo'<td>'.$row2["ans_value"].'</td>';
+                                                            $a = 2;
+                                                            break;
+                                                        }
+                                                    }
+                                                    if($a == 1){
+                                                        echo'<td>'.'NA'.'</td>';
+                                                    }
+
+                                                }
+                     
+                                            }
+                                    } 
+                                    
                                     ?>
+                                    <!-- <tbody id="pullquizans"> -->
+                                    
                                 <!-- </tbody> -->
                             </table>
                             <input id="resetID" value=<?php echo $uid; ?> type="hidden" />
@@ -204,3 +298,4 @@ require("../connect.php");
         </div>
         
   </div>
+ 
