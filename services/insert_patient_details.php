@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $_POST["email"];
   $relationship = $_POST["relationship"];
   $order=implode(',',$_POST['order']);
+  $transportation=$_POST["transportation"];
   $gender = $_POST["genderDemographic"];
     if($gender =="other"){
       if($_POST["other_reason"]){
@@ -52,11 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //student registration
         if($registered == 1){
           $registered = 1;
-          $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
+          $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `transportation`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
           
           $stmt = $conn->prepare($sql2);
           $phoneNum = '0';
-          $stmt->bind_param("sssssisssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
+          $stmt->bind_param("sssssissssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$transportation,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
           // var_dump($sql2);
           $isSuccessful = $stmt->execute();
           if ($isSuccessful == TRUE) {
@@ -87,11 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else if($registered == 0){
         // echo "The email is available";
         $registered = 1;
-        $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
+        $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `transportation`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
           
         $stmt = $conn->prepare($sql2);
         $phoneNum = '0';
-        $stmt->bind_param("sssssisssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
+        $stmt->bind_param("sssssissssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$transportation,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
         // var_dump($sql2);
         $isSuccessful = $stmt->execute();
         if ($isSuccessful == TRUE) {
@@ -122,11 +123,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       //student update
     else{
         $registered = 1;
-        $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
+        $sql2 = "INSERT INTO  users (`fname`,`lname`,`parentName`, `password`,`username`,`phnum`, `email`, `relationship`, `child`, `transportation`, `age`, `gender`, `race`,`grade`, `lunchStatus`, `zip`,`pastmeals`,`homeless`,`signature`,`payUtility`,`notWorking`,`childKnows`,`clinicName`,`anything`, `findResources`,`isFake`,`signDate`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)";
           
           $stmt = $conn->prepare($sql2);
           $phoneNum = '0';
-          $stmt->bind_param("sssssisssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
+          $stmt->bind_param("sssssissssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$transportation,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
           // var_dump($sql2);
           $isSuccessful = $stmt->execute();
         if ($isSuccessful_2 == TRUE) {
