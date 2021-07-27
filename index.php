@@ -802,10 +802,12 @@ else{
                                                 <select id="clinicName" name="clinicName" class="form-control">
                                                 <option value="Sood Clinic" selected>Dr Sood Clinic </option>
                                                 <option value="Kaprea Clinic">Dr Kaprea Clinic</option>
-                                                <option value="test">Test</option>
+                                                <option value="Sickle Cell Clinic">Sickle Cell Clinic</option>
+                                                <!-- <option value="test">Test</option> -->
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="form-row ">
                                             <div
                                                 class="form-group col-md-12 col-sm-12 d-flex flex-column align-items-baseline mg-b-20">
