@@ -500,6 +500,23 @@ else{
                                         <div class="form-row">
                                             <div
                                                 class="form-group col-md-12 col-sm-12 d-flex flex-column align-items-baseline mg-b-20">
+                                                <label class="race color-heading" for="race"><strong> Do you have access to reliable transportation? </strong></label>
+                                                <div class="input-group flex-items-center">
+                                                    <div class="radio ">
+                                                        <label class="color-heading mg-r-10"><input  class="w-auto"  type="radio"
+                                                                name="transportation" value="yes" required> Yes</label>
+                                                        <label class="color-heading mg-r-10"><input  class="w-auto"  type="radio"
+                                                                name="transportation" value="no"> No</label>
+                                                    </div>
+                                                </div>
+                                                <span class="error error_red" id="raceError"></span>
+                                            </div>
+                                        </div>
+
+            
+                                        <div class="form-row">
+                                            <div
+                                                class="form-group col-md-12 col-sm-12 d-flex flex-column align-items-baseline mg-b-20">
                                                 <label class="race color-heading" for="race"><strong>What racial ethnic
                                                         group is
                                                         your child? </strong></label>
