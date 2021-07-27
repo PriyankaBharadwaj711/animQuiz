@@ -41,6 +41,7 @@ require("../connect.php");
                                         echo '<th>Age</th>';
                                         echo '<th>Relationship to child:</th>';
                                         echo '<th>Does your child have any of the following? (Check all that apply)</th>';
+                                        echo '<th>Do you have access to reliable transportation?</th>';
                                         echo '<th>Gender</th>';
                                         echo '<th>Race</th>';
                                         echo '<th>Child\'s Grade</th>';
@@ -173,6 +174,11 @@ require("../connect.php");
                                             echo '<td>Not Applicable</td>';
                                         } else {
                                             echo '<td>'.$row["child"].'</td>';
+                                        }
+                                        if($row["transportation"]==""){
+                                            echo '<td>Not Applicable</td>';
+                                        } else {
+                                            echo '<td>'.$row["transportation"].'</td>';
                                         }
                                         echo '<td>'.$row["gender"].'</td>';
                                         if($row["race"]==""){
