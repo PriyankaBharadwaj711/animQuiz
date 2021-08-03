@@ -1,8 +1,8 @@
 <?php
 session_start();
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require("../connect.php");
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           $stmt->bind_param("sssssissssissssissssssssss",$name,$lname,$parentName,$name,$name,$phoneNum,$email,$relationship,$order,$transportation,$age,$gender,$race,$grade,$childLunch,$zipcode,$pastmeals,$homeless,$signame,$payUtil,$notWorking,$childKnows,$clinicName,$anything,$findResources,$registered);
           // var_dump($sql2);
           $isSuccessful = $stmt->execute();
-        if ($isSuccessful_2 == TRUE) {
+        if ($isSuccessful == TRUE) {
 
           $user_id = $conn->insert_id;
           $sql3 = " INSERT INTO `pmp_user_role_mapping` (user_id,role_id) VALUES ('$user_id','$role_id')";
