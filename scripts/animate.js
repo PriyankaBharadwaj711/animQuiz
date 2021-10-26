@@ -35,7 +35,7 @@ $(document).ready(function () {
       $("#saveAndNext").hide();
      
     }
-    else if (currentQuestionIndex < questions.length){
+    else if (currentQuestionIndex < questions.length-1){
       $('.modal').modal('toggle'); 
       $("#nextbtn").hide();
       $("#saveAndNext").show();
@@ -73,7 +73,7 @@ $(document).ready(function () {
     currentQuestionIndex += 1;
     var ql = questions.length;
     //last question
-    if (currentQuestionIndex == questions.length ) {
+    if (currentQuestionIndex == questions.length - 1) {
       $("#saveAndNext").hide();
     }
     else{
@@ -156,16 +156,16 @@ function playQuestion() {
   $("#debugLog").empty();
   $("#debugLog").append(currentQuestionIndex+":"+iosIssue);
   // if a device has IOS issue Thank you kaprea note should be played immediately after question 7
-  if(currentQuestionIndex == questions.length-1 && iosIssue == true){
-    $('.modal').modal('toggle'); 
-      $(".modal-header").html("Thank you for completing the survey");
-      $(".modal-body").html('<video id="video1" width="500" height="345" controls playsinline><source src="./vedios/thankyouKapreaNote.mp4"> type="video/mp4"> </video>');
-      $("#submitQuiz").show();
-      $("#saveAndNext").hide();
-      $("#closebtn").hide();
-      $("#nextbtn").hide();
+  // if(currentQuestionIndex == questions.length-1 && iosIssue == true){
+  //   $('.modal').modal('toggle'); 
+  //     $(".modal-header").html("Thank you for completing the survey");
+  //     $(".modal-body").html('<video id="video1" width="500" height="345" controls playsinline><source src="./vedios/thankyouKapreaNote.mp4"> type="video/mp4"> </video>');
+  //     $("#submitQuiz").show();
+  //     $("#saveAndNext").hide();
+  //     $("#closebtn").hide();
+  //     $("#nextbtn").hide();
       
-  }else{
+  // }else{
     console.log(currentQuestionIndex + "inside playQuestion");
     var videoFile = './vedios/' + questions[currentQuestionIndex].videoPath;
     $('#divVideo video source').attr('src', videoFile);
@@ -199,7 +199,7 @@ function playQuestion() {
   $("#optionsHolder").html(optionsContent);
   //whenever yes no sometimes is clicked the responsive voice should stop
   stopsPlaybackOptions();
-  }
+  // }
  
 
 }
@@ -214,7 +214,7 @@ function myFunction() {
 }
 
 function playOptions(){
-  if(currentQuestionIndex == questions.length ){
+  if(currentQuestionIndex == questions.length - 1){
     return;
   }
   console.log("play options called ");
