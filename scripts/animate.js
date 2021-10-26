@@ -35,7 +35,7 @@ $(document).ready(function () {
       $("#saveAndNext").hide();
      
     }
-    else if (currentQuestionIndex < questions.length-1){
+    else if (currentQuestionIndex < questions.length){
       $('.modal').modal('toggle'); 
       $("#nextbtn").hide();
       $("#saveAndNext").show();
@@ -73,7 +73,7 @@ $(document).ready(function () {
     currentQuestionIndex += 1;
     var ql = questions.length;
     //last question
-    if (currentQuestionIndex == questions.length - 1) {
+    if (currentQuestionIndex == questions.length ) {
       $("#saveAndNext").hide();
     }
     else{
@@ -214,7 +214,7 @@ function myFunction() {
 }
 
 function playOptions(){
-  if(currentQuestionIndex == questions.length - 1){
+  if(currentQuestionIndex == questions.length ){
     return;
   }
   console.log("play options called ");
